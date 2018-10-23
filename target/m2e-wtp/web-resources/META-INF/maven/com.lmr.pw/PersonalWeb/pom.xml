@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.lmr.pw</groupId>
-	<artifactId>PersonalWeb</artifactId>
-	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>PersonalWeb</name>
-	<url>http://maven.apache.org</url>
-	<dependencies>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.lmr.pw</groupId>
+  <artifactId>PersonalWeb</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>PersonalWeb Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
 		<dependency>
 			<!--3.0的junit是使用编程的方式来进行测试，而junit4是使用注解的方式来运行junit -->
 			<groupId>junit</groupId>
@@ -152,7 +152,7 @@
 		</dependency>
 
 	</dependencies>
-	<build>
-		<finalName>PersonalWeb</finalName>
-	</build>
+  <build>
+    <finalName>PersonalWeb</finalName>
+  </build>
 </project>
