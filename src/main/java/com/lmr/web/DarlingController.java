@@ -1,13 +1,19 @@
 package com.lmr.web;
 
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.lmr.entity.MoodLog;
+import com.lmr.service.DarlingService;
 
 /**
  * 
@@ -21,10 +27,10 @@ public class DarlingController{
 	 */
 	private Logger logger=LoggerFactory.getLogger(this.getClass());
 
-//	/**
-//	 */
-//	@Autowired
-//	private SeckillService seckillService;
+	/**
+	 */
+	@Autowired
+	private DarlingService darlingService;
 	
 	/**
 	 * 主页
@@ -43,8 +49,15 @@ public class DarlingController{
 	 */
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String add(@RequestParam("moodText") String moodText,Model model){
-		System.out.println("-------------");
 		System.out.println(moodText);
+		
+		MoodLog mood=new MoodLog();
+		mood.setUserId(123);
+		mood.setMoodText(moodText);
+		mood.setPublishTime(new Date());
+		
+		darlingService.publishMood(mood);
+		
 		return "darling/list";
 	}
 	

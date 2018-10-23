@@ -1,39 +1,42 @@
 -- 数据库初始化脚本
 
 -- 创建数据库
-CREATE DATABASE seckilldb;
+CREATE DATABASE personalwebdb;
 -- 使用数据库
-use seckilldb;
-CREATE TABLE seckill(
-  `seckill_id` BIGINT NOT NUll AUTO_INCREMENT COMMENT '商品库存ID',
-  `name` VARCHAR(120) NOT NULL COMMENT '商品名称',
-  `number` int NOT NULL COMMENT '库存数量',
-  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `start_time` TIMESTAMP  NOT NULL COMMENT '秒杀开始时间',
-  `end_time`   TIMESTAMP   NOT NULL COMMENT '秒杀结束时间',
-  PRIMARY KEY (seckill_id),
-  key idx_start_time(start_time),
-  key idx_end_time(end_time),
-  key idx_create_time(create_time)
-)ENGINE=INNODB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8 COMMENT='秒杀库存表';
+use personalwebdb;
 
--- 初始化数据
-INSERT into seckill(name,number,start_time,end_time)
-VALUES
-  ('1000元秒杀iphone6',100,'2016-01-01 00:00:00','2016-01-02 00:00:00'),
-  ('800元秒杀ipad',200,'2016-01-01 00:00:00','2016-01-02 00:00:00'),
-  ('6600元秒杀mac book pro',300,'2016-01-01 00:00:00','2016-01-02 00:00:00'),
-  ('7000元秒杀iMac',400,'2016-01-01 00:00:00','2016-01-02 00:00:00');
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `moodlog`
+-- ----------------------------
+DROP TABLE IF EXISTS `moodlog`;
+CREATE TABLE `moodlog` (
+  `id` int(11) unsigned zerofill NOT NULL auto_increment,
+  `userId` int(8) NOT NULL,
+  `moodText` longtext NOT NULL,
+  `publishTime` datetime NOT NULL,
+  `isDelete` int(2) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=gb2312;
 
--- 秒杀成功明细表
--- 用户登录认证相关信息(简化为手机号)
-CREATE TABLE success_killed(
-  `seckill_id` BIGINT NOT NULL COMMENT '秒杀商品ID',
-  `user_phone` BIGINT NOT NULL COMMENT '用户手机号',
-  `state` TINYINT NOT NULL DEFAULT -1 COMMENT '状态标识:-1:无效 0:成功 1:已付款 2:已发货',
-  `create_time` TIMESTAMP NOT NULL COMMENT '创建时间',
-  PRIMARY KEY(seckill_id,user_phone),/*联合主键*/
-  KEY idx_create_time(create_time)
-)ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='秒杀成功明细表';
+-- ----------------------------
+-- Records of moodlog
+-- ----------------------------
+INSERT INTO `MoodLog` VALUES ('00000000002', '123', '李梦然18767137693401103554@qq.com', '2018-10-23 20:10:24', '0');
+INSERT INTO `MoodLog` VALUES ('00000000003', '123', '李梦然18767137693401103554@qq.com', '2018-10-23 20:10:38', '0');
+INSERT INTO `MoodLog` VALUES ('00000000004', '123', 'Navicat for MySQL Enterprise Edition 8注册码(已验证)：\nNAVJ-W56S-3YUU-MVHV\nNAVE-WAGB-ZLF4-T23K\n', '2018-10-23 20:12:47', '0');
 
-  -- SHOW CREATE TABLE seckill;#显示表的创建信息
+-- ----------------------------
+-- Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(8) NOT NULL,
+  `name` varchar(16) NOT NULL,
+  `password` varchar(16) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
