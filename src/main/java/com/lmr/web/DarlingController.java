@@ -4,8 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 
@@ -20,7 +22,6 @@ public class DarlingController{
 	private Logger logger=LoggerFactory.getLogger(this.getClass());
 
 //	/**
-//	 * 与秒�?相关的业务操作对�?
 //	 */
 //	@Autowired
 //	private SeckillService seckillService;
@@ -33,6 +34,18 @@ public class DarlingController{
 	@RequestMapping(value="/jun", method=RequestMethod.GET)
 	public String homePage(Model model){
 		return "darling/index";
+	}
+	
+	/**
+	 * 添加日志
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/add", method=RequestMethod.POST)
+	public String add(@RequestParam("moodText") String moodText,Model model){
+		System.out.println("-------------");
+		System.out.println(moodText);
+		return "darling/list";
 	}
 	
 	/**
