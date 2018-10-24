@@ -23,8 +23,14 @@
 <mapper namespace="com.lmr.dao.MoodLogDao">
 
 	<insert id="insertMoodLog">
-        INSERT INTO MoodLog(userId,moodText,publishTime,isDelete)
-        VALUES (#{moodLog.userId},#{moodLog.moodText},#{moodLog.publishTime},0)
+        INSERT INTO MoodLog(user,moodText,publishTime,isDelete)
+        VALUES (#{moodLog.user},#{moodLog.moodText},#{moodLog.publishTime},0)
     </insert>
+    
+    <select id="queryAll" resultType="MoodLog">
+        SELECT *
+        FROM MoodLog
+        ORDER BY publishTime DESC
+    </select>
 
 </mapper>

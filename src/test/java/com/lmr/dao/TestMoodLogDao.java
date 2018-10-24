@@ -1,6 +1,7 @@
 package com.lmr.dao;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -22,7 +23,7 @@ public class TestMoodLogDao {
 	public void Fun(){
 		
 		MoodLog mood=new MoodLog();
-		mood.setUserId(123);
+		mood.setUser("ad");
 		mood.setMoodText("李梦然18767137693401103554@qq.com");
 		mood.setPublishTime(new Date());
 		
@@ -31,6 +32,15 @@ public class TestMoodLogDao {
 		System.out.println("-----------");
 		
 		moodLogDao.insertMoodLog(mood);
+	}
+	
+	@Test
+	public void FunQuery(){
+		List<MoodLog> list=moodLogDao.queryAll();
+		System.out.println(list.size());
+		for(MoodLog moodLog:list){
+			System.out.println(moodLog.toString());
+		}
 	}
 	
 }

@@ -3,26 +3,26 @@
 
 var darling = {
 
-	//封装秒杀相关ajax的url
+	// 相关ajax的url
 	URL : {
 		add : function() {
-			return $("#basePath").val()+'darling/add';
+			return $("#basePath").val() + 'darling/add';
 		},
 		list : function() {
-			return $("#basePath").val()+'darling/list';
+			return $("#basePath").val() + 'darling/list';
 		}
 	},
 
-	//验证内容
+	// 验证内容
 	validateMoodText : function(text) {
 		if (!text && text.length == 0) {
-			return false;//直接判断对象会看对象是否为空,空就是undefine就是false;
+			return false;// 直接判断对象会看对象是否为空,空就是undefine就是false;
 		} else {
 			return true;
 		}
 	},
 
-	//发布说说
+	// 发布说说
 	addMood : function() {
 		var moodText = $("#moodText").val();
 		if (darling.validateMoodText(moodText)) {
@@ -33,6 +33,7 @@ var darling = {
 				dataType : "text",
 				success : function() {
 					alert("success");
+					window.location.reload();
 				},
 				data : {
 					"moodText" : moodText
@@ -41,6 +42,22 @@ var darling = {
 		} else {
 			alert("不能为空!!!");
 		}
+	},
+
+	// 列表说说
+	listMood : function() {
+		alert("+++++++++++++");
+		var listUrl = darling.URL.list();
+		$.ajax({
+			url : listUrl,
+			type : "GET",
+			dataType : "text",
+			success : function() {
+				alert("+-+success");
+//				window.location.reload();
+			},
+			data : {}
+		});
 	},
 
 }

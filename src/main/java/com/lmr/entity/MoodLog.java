@@ -9,9 +9,9 @@ public class MoodLog {
 
 	private int id;
 	/**
-	 * 发布者ID
+	 * 发布者
 	 */
-	private int userId;
+	private String user;
 	/**
 	 * 说说内容
 	 */
@@ -32,13 +32,13 @@ public class MoodLog {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public int getUserId() {
-		return userId;
+	
+	public String getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(String user) {
+		this.user = user;
 	}
 
 	public String getMoodText() {
@@ -67,7 +67,7 @@ public class MoodLog {
 
 	@Override
 	public String toString() {
-		return "MoodLog [id=" + id + ", userId=" + userId + ", moodText=" + moodText + ", publishTime=" + publishTime
+		return "MoodLog [id=" + id + ", user=" + user + ", moodText=" + moodText + ", publishTime=" + publishTime
 				+ ", isDelete=" + isDelete + "]";
 	}
 
