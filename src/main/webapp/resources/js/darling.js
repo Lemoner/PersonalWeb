@@ -25,6 +25,7 @@ var darling = {
 	// 发布说说
 	addMood : function() {
 		var moodText = $("#moodText").val();
+		alert(moodText);
 		if (darling.validateMoodText(moodText)) {
 			var addUrl = darling.URL.add();
 			$.ajax({

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.lmr.dao.MoodLogDao;
 import com.lmr.entity.MoodLog;
+import com.vdurmont.emoji.EmojiParser;
 
 /**
  * 说说业务层
@@ -43,7 +44,15 @@ public class DarlingService {
 	 * @return
 	 */
 	public List<MoodLog> getMoodLogAll() {
-		return moodLogDao.queryAll();
+		
+		List<MoodLog> moodLogs=moodLogDao.queryAll();
+		
+		for(MoodLog mood:moodLogs){
+			String text=mood.getMoodText();
+			mood.setMoodText(EmojiParser.parseToUnicode(text));
+		}
+		
+		return moodLogs;
 	}
 	
 	

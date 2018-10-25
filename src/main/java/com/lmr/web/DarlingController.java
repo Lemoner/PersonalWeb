@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.lmr.entity.MoodLog;
 import com.lmr.service.DarlingService;
+import com.vdurmont.emoji.EmojiParser;
 
 /**
  * 说说控制层
@@ -48,7 +49,10 @@ public class DarlingController{
 	 * @return
 	 */
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String add(@RequestParam("moodText") String moodText,Model model){
+	public String add(@RequestParam("moodText") String text,Model model){
+		
+		String moodText=EmojiParser.parseToAliases(text);
+		
 		System.out.println(moodText);
 		
 		MoodLog mood=new MoodLog();
